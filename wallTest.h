@@ -2,29 +2,21 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "Types.h"
+#include "dots.h"
+
+#pragma once
+
+// #include "Types.h"
 
 
 typedef struct Wall {
-
-	~Wall() {
-		delete vec;
-	}
 
 	Wall* front = nullptr;
 	Wall* back = nullptr;
 	dot* leftDot = nullptr;
 	dot* rightDot = nullptr;
-	Vec2* vec = nullptr;
 
 	bool isObject = false;
-
-	Vec2* vec2() {
-		vec = new Vec2();
-		vec->leftDot = leftDot;
-		vec->rightDot = rightDot;
-		return vec;
-	}
 
 } Wall;
 
@@ -46,8 +38,6 @@ private:
 	dot** wallDots;
 	int wallNo;
 	bool spriteIsRead = false;
-
-	std::vector<Wall*>ObjNodes;
 
 	// How the file must be structured 
 	// %d %d %d %d %d\n -> Ldot Rdot frontWall backWall wallHeight
@@ -104,10 +94,14 @@ private:
 		for (int i = 0; i < wallNo; i++) {
 			wallDots[i] = new dot();
 		}
+		// printf("<WallDots>\n");
 		for (int i = 0; i < wallNo; i++) {
 			double rad, deg;
 			fscanf(fptr, "%lf %lf\n", &rad, &deg);
 			wallDots[i]->setup(rad / 300.0, -deg);
+			wallDots[i]->cal();
+			// printf("(%f, %f)\n", wallDots[i]->poll_x(), wallDots[i]->poll_y());
 		}
+		// printf("===================\n");
 	}
 };

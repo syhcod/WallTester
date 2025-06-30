@@ -24,33 +24,16 @@ int main() {
   // Wall은 root에서 가져옴
 
   Walls* wallManager = new Walls("./dots", "./walls", 18);
-  Vec2* move = new Vec2();
-  Vec2* wall = new Vec2();
 
   Wall* root = wallManager->getRoot();
+  
 
-  move->leftDot->set_x(0);
-  move->leftDot->set_y(0);
-  move->rightDot->set_x(1);
-  move->rightDot->set_y(0);
-  wall->leftDot->set_x(0);
-  wall->leftDot->set_y(1);
-  wall->rightDot->set_x(1.1);
-  wall->rightDot->set_y(0);
-
-  Vec2 Vecs[10];
-  for (int i = 0; i < 10; i++) {
-    Vecs[i] = (i % 2) == 0 ? *move : *wall;
-  }
-
-  dot *c=new dot(0.5, 0.5);
-  dot *a=new dot(5, 5);
+  dot *c=new dot(6, -10);
+  dot *a=new dot(10, -10);
 
   Collider collider;
 
-  Vec2* yeah = new Vec2();
-  yeah->leftDot = c;
-  yeah->rightDot = a;
+  Vec2 yeah(*c, *a);
 
   collider.findWall(yeah, root);
   
@@ -59,8 +42,6 @@ int main() {
   visualizer->show(true);
 
   
-  delete move;
-  delete wall;
   // delete visualizer;
   delete wallManager;
 }

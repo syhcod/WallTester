@@ -32,9 +32,9 @@ public:
 
 	static void showVecs(Vec2* Vecs, int wallNo) {
 		for (int i = 0; i < wallNo; i++) {
-			double wx = Vecs[i].rightDot->poll_x() - Vecs[i].leftDot->poll_x();
-			double wy = Vecs[i].rightDot->poll_y() - Vecs[i].leftDot->poll_y();
-			printf("V((%.2lf, %.2lf),(%.2lf, %.2lf))\n", Vecs[i].leftDot->poll_x(), Vecs[i].leftDot->poll_y(), wx, wy);
+			double wx = -Vecs[i].getStart().poll_x() + Vecs[i].getFinish().poll_x();
+			double wy = -Vecs[i].getStart().poll_y() + Vecs[i].getFinish().poll_y();
+			printf("V((%.2lf, %.2lf),(%.2lf, %.2lf))\n", Vecs[i].getStart().poll_x(), Vecs[i].getStart().poll_y(), wx, wy);
 		}
 	}
 
