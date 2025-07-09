@@ -29,16 +29,16 @@ int main() {
   
 
   dot *c=new dot(6, -10);
-  dot *a=new dot(10, -10);
+  dot *a=new dot(20, -10);
 
   Collider collider;
 
   Vec2 yeah(*c, *a);
 
-  collider.findWall(yeah, root);
+  Vec2* vecs = collider.collider(root, yeah);
   
   
-  Visualizer* visualizer = new Visualizer(root, collider.getVecs(), collider.getVecsNo());
+  Visualizer* visualizer = new Visualizer(root, vecs, collider.getLength());
   visualizer->show(true);
 
   
