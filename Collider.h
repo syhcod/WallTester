@@ -9,7 +9,7 @@
 class Collider {
 public:
 	Vec2* collider(Wall* root, Vec2 move);
-	static char isRight(dot c, Wall* wall);
+	static bool isRight(dot c, Wall* wall);
 	bool trueCollision(Wall* root, Vec2 move, SDL_FPoint* intersect);
 	unsigned int getLength();
 private:
